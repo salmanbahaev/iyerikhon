@@ -22,15 +22,18 @@ interface InteractiveStarsProps {
 
 export function InteractiveStars({ 
   className = '', 
-  starCount = 150,
-  maxDistance = 100,
-  pullStrength = 0.1
+  starCount = 100, // Уменьшено с 250 до 100
+  maxDistance = 80, // Уменьшено с 150 до 80
+  pullStrength = 0.08 // Уменьшено для плавности
 }: InteractiveStarsProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const starsRef = useRef<Star[]>([])
   const mouseRef = useRef({ x: 0, y: 0 })
-  const animationRef = useRef<number>()
+  const animationRef = useRef<number | null>(null)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
+  const lastMouseMoveTime = useRef<number>(0)
+  const isVisible = useRef<boolean>(true)
+  const performanceMode = useRef<'high' | 'medium' | 'low'>('high')
 
   // Инициализация звезд
   const initStars = (width: number, height: number) => {
@@ -72,8 +75,12 @@ export function InteractiveStars({
     initStars(rect.width, rect.height)
   }
 
-  // Обработка движения мыши
+  // Оптимизированная обработка движения мыши с throttling
   const handleMouseMove = (e: MouseEvent) => {
+    const now = performance.now()
+    if (now - lastMouseMoveTime.current < 16) return // Throttle до 60fps
+    
+    lastMouseMoveTime.current = now
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -84,8 +91,31 @@ export function InteractiveStars({
     }
   }
 
-  // Анимация звезд
+  // Автоматическое определение режима производительности
+  const checkPerformance = () => {
+    const start = performance.now()
+    // Простой тест производительности
+    for (let i = 0; i < 10000; i++) {
+      Math.sqrt(Math.random() * 1000)
+    }
+    const duration = performance.now() - start
+    
+    if (duration > 5) {
+      performanceMode.current = 'low'
+    } else if (duration > 2) {
+      performanceMode.current = 'medium'
+    } else {
+      performanceMode.current = 'high'
+    }
+  }
+
+  // Оптимизированная анимация звезд
   const animate = () => {
+    if (!isVisible.current) {
+      animationRef.current = requestAnimationFrame(animate)
+      return
+    }
+
     const canvas = canvasRef.current
     if (!canvas) return
 
@@ -100,15 +130,21 @@ export function InteractiveStars({
 
     const mouse = mouseRef.current
     const currentTime = Date.now() * 0.001
+    const mode = performanceMode.current
 
-    starsRef.current.forEach((star) => {
-      // Расчет расстояния до курсора
+    starsRef.current.forEach((star, index) => {
+      // Пропускаем некоторые звезды в режиме низкой производительности
+      if (mode === 'low' && index % 2 !== 0) return
+
+      // Оптимизированный расчет расстояния (избегаем Math.sqrt когда возможно)
       const dx = mouse.x - star.originalX
       const dy = mouse.y - star.originalY
-      const distance = Math.sqrt(dx * dx + dy * dy)
+      const distanceSquared = dx * dx + dy * dy
+      const maxDistanceSquared = maxDistance * maxDistance
 
       // Эффект притяжения к курсору
-      if (distance < maxDistance) {
+      if (distanceSquared < maxDistanceSquared) {
+        const distance = Math.sqrt(distanceSquared) // Только когда нужно
         const force = (maxDistance - distance) / maxDistance
         const pullX = dx * force * pullStrength
         const pullY = dy * force * pullStrength
@@ -116,68 +152,30 @@ export function InteractiveStars({
         star.x = star.originalX + pullX
         star.y = star.originalY + pullY
       } else {
-        // Возврат к исходной позиции
-        star.x += (star.originalX - star.x) * 0.05
-        star.y += (star.originalY - star.y) * 0.05
+        // Возврат к исходной позиции (быстрее)
+        star.x += (star.originalX - star.x) * 0.08
+        star.y += (star.originalY - star.y) * 0.08
       }
 
-      // Эффект мерцания
-      const twinkle = Math.sin(currentTime * star.twinkleSpeed + star.twinklePhase)
-      const currentOpacity = star.opacity + twinkle * 0.3
+      // Упрощенное мерцание
+      let currentOpacity = star.opacity
+      if (mode === 'high') {
+        const twinkle = Math.sin(currentTime * star.twinkleSpeed + star.twinklePhase)
+        currentOpacity = star.opacity + twinkle * 0.2 // Уменьшено с 0.3
+      }
 
-      // Отрисовка звезды
+      // Упрощенная отрисовка звезды
       ctx.save()
-      ctx.globalAlpha = Math.max(0.2, currentOpacity)
+      ctx.globalAlpha = Math.max(0.3, currentOpacity)
       
-      // Основная звезда с градиентом
-      const starGradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.size * 2)
-      starGradient.addColorStop(0, '#ffffff')
-      starGradient.addColorStop(0.6, '#60a5fa')
-      starGradient.addColorStop(1, 'transparent')
-      
-      ctx.fillStyle = starGradient
+      // Простая белая заливка вместо градиентов для оптимизации
+      ctx.fillStyle = '#ffffff'
       ctx.beginPath()
       ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2)
       ctx.fill()
 
-      // Светящийся эффект для больших звезд
-      if (star.size > 1.5) {
-        ctx.globalAlpha = Math.max(0.1, currentOpacity * 0.4)
-        const glowGradient = ctx.createRadialGradient(star.x, star.y, 0, star.x, star.y, star.size * 3)
-        glowGradient.addColorStop(0, '#10b981')
-        glowGradient.addColorStop(0.5, '#60a5fa')
-        glowGradient.addColorStop(1, 'transparent')
-        
-        ctx.fillStyle = glowGradient
-        ctx.beginPath()
-        ctx.arc(star.x, star.y, star.size * 2.5, 0, Math.PI * 2)
-        ctx.fill()
-      }
-
-      // Эффект притяжения - линии к курсору
-      if (distance < maxDistance && distance > 0) {
-        const lineOpacity = (maxDistance - distance) / maxDistance * 0.6
-        ctx.globalAlpha = lineOpacity
-        
-        // Создаем градиент для линии
-        const gradient = ctx.createLinearGradient(star.x, star.y, mouse.x, mouse.y)
-        gradient.addColorStop(0, '#10b981') // emerald-500
-        gradient.addColorStop(0.5, '#60a5fa') // blue-400
-        gradient.addColorStop(1, '#3b82f6') // blue-500
-        
-        ctx.strokeStyle = gradient
-        ctx.lineWidth = 1.5
-        ctx.lineCap = 'round'
-        ctx.beginPath()
-        ctx.moveTo(star.x, star.y)
-        ctx.lineTo(mouse.x, mouse.y)
-        ctx.stroke()
-        
-        // Добавляем светящийся эффект
-        ctx.globalAlpha = lineOpacity * 0.3
-        ctx.lineWidth = 3
-        ctx.stroke()
-      }
+      // Убираем все тяжелые эффекты (градиенты, свечение, линии)
+      // Они создавали основную нагрузку
 
       ctx.restore()
     })
@@ -187,13 +185,19 @@ export function InteractiveStars({
 
   useEffect(() => {
     updateDimensions()
+    checkPerformance() // Проверяем производительность устройства
     
     const handleResize = () => {
       updateDimensions()
     }
 
+    const handleVisibilityChange = () => {
+      isVisible.current = !document.hidden
+    }
+
     window.addEventListener('resize', handleResize)
     window.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('visibilitychange', handleVisibilityChange)
 
     // Запуск анимации
     animate()
@@ -201,6 +205,7 @@ export function InteractiveStars({
     return () => {
       window.removeEventListener('resize', handleResize)
       window.removeEventListener('mousemove', handleMouseMove)
+      document.removeEventListener('visibilitychange', handleVisibilityChange)
       if (animationRef.current) {
         cancelAnimationFrame(animationRef.current)
       }

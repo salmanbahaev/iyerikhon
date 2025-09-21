@@ -2,6 +2,7 @@
 
 import * as React from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Container } from "@/components/ui/container"
 import { Button } from "@/components/ui/button"
@@ -9,6 +10,7 @@ import { Button } from "@/components/ui/button"
 export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = React.useState(false)
+  const pathname = usePathname()
 
   React.useEffect(() => {
     const handleScroll = () => {
@@ -18,6 +20,12 @@ export function Header() {
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
+
+  // Определяем, нужно ли показывать фон хедера по умолчанию на этой странице
+  const isLightPage = pathname === '/projects' || pathname?.startsWith('/projects/') || pathname === '/portfolio' || pathname?.startsWith('/portfolio/')
+  
+  // Для светлых страниц хедер всегда имеет фон, для темных - только при скролле
+  const shouldShowBackground = isLightPage || isScrolled
 
   const navigation = [
     { name: "Главная", href: "/" },
@@ -33,8 +41,8 @@ export function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        isScrolled
-          ? "bg-white/95 backdrop-blur-custom shadow-lg"
+        shouldShowBackground
+          ? "bg-white/95 backdrop-blur-sm shadow-lg border-b border-slate-200/50"
           : "bg-transparent"
       )}
     >
@@ -48,13 +56,13 @@ export function Header() {
             <div className="hidden sm:block">
               <div className={cn(
                 "font-bold text-lg transition-colors",
-                isScrolled ? "text-secondary-900" : "text-white"
+                shouldShowBackground ? "text-slate-900" : "text-white"
               )}>
                 ООО «Иерихон»
               </div>
               <div className={cn(
                 "text-xs transition-colors",
-                isScrolled ? "text-secondary-600" : "text-white/80"
+                shouldShowBackground ? "text-slate-600" : "text-white/80"
               )}>
                 Аккредитованный застройщик ВТБ
               </div>
@@ -68,11 +76,19 @@ export function Header() {
                 key={item.name}
                 href={item.href}
                 className={cn(
-                  "text-sm font-medium transition-colors hover:text-primary-600",
-                  isScrolled ? "text-secondary-700" : "text-white/90"
+                  "text-sm font-medium transition-colors hover:text-blue-600 relative",
+                  shouldShowBackground ? "text-slate-700" : "text-white/90",
+                  pathname === item.href && shouldShowBackground && "text-blue-600 font-semibold",
+                  pathname === item.href && !shouldShowBackground && "text-white font-semibold"
                 )}
               >
                 {item.name}
+                {pathname === item.href && (
+                  <div className={cn(
+                    "absolute -bottom-1 left-0 right-0 h-0.5 rounded-full transition-colors",
+                    shouldShowBackground ? "bg-blue-600" : "bg-white"
+                  )} />
+                )}
               </Link>
             ))}
           </nav>
@@ -81,7 +97,7 @@ export function Header() {
           <div className="hidden md:flex items-center">
             <div className={cn(
               "text-sm font-semibold transition-colors",
-              isScrolled ? "text-secondary-900" : "text-white"
+              shouldShowBackground ? "text-slate-900" : "text-white"
             )}>
               +7 938 888 88 59
             </div>
@@ -95,17 +111,17 @@ export function Header() {
             <div className="w-6 h-6 flex flex-col justify-center space-y-1">
               <span className={cn(
                 "block w-6 h-0.5 transition-all",
-                isScrolled ? "bg-secondary-900" : "bg-white",
+                shouldShowBackground ? "bg-slate-900" : "bg-white",
                 isMobileMenuOpen && "rotate-45 translate-y-1.5"
               )}></span>
               <span className={cn(
                 "block w-6 h-0.5 transition-all",
-                isScrolled ? "bg-secondary-900" : "bg-white",
+                shouldShowBackground ? "bg-slate-900" : "bg-white",
                 isMobileMenuOpen && "opacity-0"
               )}></span>
               <span className={cn(
                 "block w-6 h-0.5 transition-all",
-                isScrolled ? "bg-secondary-900" : "bg-white",
+                shouldShowBackground ? "bg-slate-900" : "bg-white",
                 isMobileMenuOpen && "-rotate-45 -translate-y-1.5"
               )}></span>
             </div>
@@ -114,22 +130,27 @@ export function Header() {
 
         {/* Мобильное меню */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden py-4 border-t border-secondary-200">
+          <div className="lg:hidden py-4 border-t border-slate-200">
             <nav className="flex flex-col space-y-4">
               {navigation.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-secondary-700 hover:text-primary-600 font-medium"
+                  className={cn(
+                    "font-medium transition-colors px-4 py-2 rounded-lg",
+                    pathname === item.href 
+                      ? "text-blue-600 bg-blue-50 font-semibold" 
+                      : "text-slate-700 hover:text-blue-600 hover:bg-slate-50"
+                  )}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
                 </Link>
               ))}
             </nav>
-            <div className="mt-6 pt-6 border-t border-secondary-200">
+            <div className="mt-6 pt-6 border-t border-slate-200">
               <div className="text-center">
-                <div className="font-semibold text-secondary-900">
+                <div className="font-semibold text-slate-900">
                   +7 938 888 88 59
                 </div>
               </div>

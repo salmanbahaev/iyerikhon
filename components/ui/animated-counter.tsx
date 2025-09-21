@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils"
 interface AnimatedCounterProps {
   value: number
   duration?: number
+  delay?: number
   className?: string
   suffix?: string
 }
@@ -14,6 +15,7 @@ interface AnimatedCounterProps {
 export function AnimatedCounter({ 
   value, 
   duration = 2, 
+  delay = 0,
   className,
   suffix = ""
 }: AnimatedCounterProps) {
@@ -27,9 +29,12 @@ export function AnimatedCounter({
 
   React.useEffect(() => {
     if (isInView) {
-      motionValue.set(value)
+      const timer = setTimeout(() => {
+        motionValue.set(value)
+      }, delay)
+      return () => clearTimeout(timer)
     }
-  }, [isInView, motionValue, value])
+  }, [isInView, motionValue, value, delay])
 
   React.useEffect(() => {
     const unsubscribe = springValue.on("change", (latest) => {

@@ -76,11 +76,11 @@ export function ModernHero() {
 
   return (
     <section className="relative min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 overflow-hidden">
-      {/* Интерактивный звездный фон */}
+      {/* Оптимизированный интерактивный звездный фон */}
       <InteractiveStars 
-        starCount={250}
-        maxDistance={150}
-        pullStrength={0.2}
+        starCount={100}
+        maxDistance={80}
+        pullStrength={0.08}
       />
       
       {/* Дополнительные фоновые эффекты */}
@@ -162,16 +162,16 @@ export function ModernHero() {
                 <div className="text-white/60 text-sm">частных домов построено</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl font-bold text-white">18k+</div>
-                <div className="text-white/60 text-sm">м² школ отремонтировано</div>
+                <div className="text-3xl font-bold text-white">10</div>
+                <div className="text-white/60 text-sm">школ отремонтировано</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl font-bold text-white">5.7k</div>
-                <div className="text-white/60 text-sm">м² благоустроено</div>
+                <div className="text-3xl font-bold text-white">6</div>
+                <div className="text-white/60 text-sm">км дорог благоустроено</div>
               </div>
               <div className="space-y-2">
-                <div className="text-3xl font-bold text-white">2k+</div>
-                <div className="text-white/60 text-sm">м² для Сбербанка</div>
+                <div className="text-3xl font-bold text-white">5</div>
+                <div className="text-white/60 text-sm">объектов для Сбербанка</div>
               </div>
             </div>
           </div>
