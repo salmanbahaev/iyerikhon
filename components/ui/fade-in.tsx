@@ -18,7 +18,7 @@ export function FadeIn({
   className,
   direction = "up",
   delay = 0,
-  duration = 0.6,
+  duration = 0.4,
   once = true,
 }: FadeInProps) {
   const ref = React.useRef<HTMLDivElement>(null)

@@ -204,7 +204,7 @@ export default function ServicesPage() {
         </div>
         
         <Container className="relative z-10">
-          <div className="grid lg:grid-cols-12 gap-12 items-center min-h-screen pt-20">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center min-h-screen pt-20 px-4 sm:px-6 lg:px-8">
             {/* Left Content */}
             <div className="lg:col-span-7">
               <FadeIn>
@@ -252,7 +252,7 @@ export default function ServicesPage() {
 
               {/* Trust Indicators */}
               <FadeIn delay={0.4}>
-                <div className="flex flex-wrap items-center gap-8 text-slate-300">
+                <div className="flex flex-wrap items-center gap-4 md:gap-8 text-slate-300">
                   <div className="flex items-center gap-2">
                     <CheckCircle className="w-5 h-5 text-emerald-400" />
                     <span className="text-sm">Партнер Сбербанка</span>
