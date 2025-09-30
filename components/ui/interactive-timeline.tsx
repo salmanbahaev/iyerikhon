@@ -24,7 +24,7 @@ export function InteractiveTimeline({ items, className }: InteractiveTimelinePro
   // Scroll-based progress
   const { scrollYProgress } = useScroll({
     target: containerRef,
-    offset: ["start center", "end center"]
+    offset: ["start 30%", "end 70%"]
   })
   
   const progressHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"])
@@ -33,7 +33,7 @@ export function InteractiveTimeline({ items, className }: InteractiveTimelinePro
   React.useEffect(() => {
     const unsubscribe = scrollYProgress.onChange((progress) => {
       const newIndex = Math.min(
-        Math.floor(progress * items.length),
+        Math.round(progress * (items.length - 1)),
         items.length - 1
       )
       setActiveIndex(Math.max(0, newIndex))
@@ -77,7 +77,6 @@ export function InteractiveTimeline({ items, className }: InteractiveTimelinePro
                   ? "bg-blue-600 text-white border-blue-600 shadow-lg"
                   : "bg-white text-slate-600 hover:bg-slate-50"
               )}
-              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               {items[index].year}
@@ -121,12 +120,11 @@ export function InteractiveTimeline({ items, className }: InteractiveTimelinePro
                   {/* Timeline dot */}
                   <motion.div
                     className="absolute w-4 h-4 rounded-full border-2 flex items-center justify-center cursor-pointer"
-                    style={{ left: '24px', top: '8px' }}
+                    style={{ left: '25px', top: '8px' }}
                     animate={{
                       backgroundColor: isActive ? "#3b82f6" : isPassed ? "#10b981" : "#ffffff",
                       borderColor: isActive ? "#3b82f6" : isPassed ? "#10b981" : "#cbd5e1"
                     }}
-                    whileHover={{ scale: 1.1 }}
                     transition={{ duration: 0.3 }}
                   >
                     {isPassed ? (

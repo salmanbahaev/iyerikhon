@@ -86,6 +86,7 @@ export function MortgageFeatures() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 whileHover={{ y: -8, scale: 1.02 }}
+                transition={{ duration: 0.3 }}
                 className="group relative"
               >
                 <Card className={`
@@ -235,6 +236,7 @@ export function MortgageFeatures() {
           <motion.button
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.3 }}
             className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-emerald-600 to-green-600 text-white rounded-xl font-semibold hover:from-emerald-700 hover:to-green-700 transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             Рассчитать ипотеку

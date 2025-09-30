@@ -83,7 +83,7 @@ export function FloatingCard({
         "group relative p-8 rounded-3xl bg-gradient-to-br from-white to-slate-50/80",
         "border border-white/20 backdrop-blur-xl shadow-xl hover:shadow-2xl",
         "transition-all duration-300 cursor-pointer",
-        "hover:-translate-y-4 hover:scale-105",
+        "hover:-translate-y-4",
         className
       )}
       onMouseEnter={() => setIsHovered(true)}

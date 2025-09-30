@@ -196,7 +196,7 @@ export default function AboutPage() {
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                   <Button 
                     size="lg" 
-                    className="bg-gradient-to-r from-white to-slate-100 text-slate-900 hover:from-slate-100 hover:to-slate-200 px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105"
+                    className="bg-gradient-to-r from-white to-slate-100 text-slate-900 hover:from-slate-100 hover:to-slate-200 px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-200"
                   >
                     <Phone className="mr-3 h-5 w-5" />
                     Связаться с нами
@@ -219,16 +219,6 @@ export default function AboutPage() {
 
         {/* Floating Stats Section */}
         <section className="py-32 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-5">
-            <svg className="w-full h-full" viewBox="0 0 400 400" preserveAspectRatio="none">
-              <defs>
-                <pattern id="statsPattern" patternUnits="userSpaceOnUse" width="40" height="40">
-                  <circle cx="20" cy="20" r="2" fill="currentColor" />
-                </pattern>
-              </defs>
-              <rect width="100%" height="100%" fill="url(#statsPattern)" />
-            </svg>
-          </div>
           
           <Container className="relative z-10">
             <FadeIn>
@@ -282,7 +272,7 @@ export default function AboutPage() {
                           <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
                             <Heart className="w-6 h-6 text-white" />
                           </div>
-                          <h3 className="text-2xl font-bold">Наша миссия</h3>
+                          <h3 className="text-2xl font-bold text-white">Наша миссия</h3>
                         </div>
                         
                         <p className="text-slate-200 leading-relaxed mb-6">
@@ -348,17 +338,17 @@ export default function AboutPage() {
         </section>
 
         {/* Enhanced CTA Section */}
-        <section className="relative py-32 bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white overflow-hidden">
+        <section className="relative py-32 bg-gradient-to-br from-slate-50 via-white to-blue-50/30 text-slate-900 overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/20 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
-            <div className="absolute center w-64 h-64 bg-purple-500/15 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+            <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse"></div>
+            <div className="absolute bottom-0 right-0 w-96 h-96 bg-emerald-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute center w-64 h-64 bg-purple-500/8 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
           </div>
 
           <Container className="relative z-10">
             <div className="max-w-5xl mx-auto text-center">
               <FadeIn>
-                <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-tight">
+                <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-relaxed">
                   Готовы начать
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-400 to-purple-400 animate-gradient-x">
                     сотрудничество?
@@ -367,7 +357,7 @@ export default function AboutPage() {
               </FadeIn>
               
               <FadeIn delay={0.1}>
-                <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-xl md:text-2xl text-slate-600 mb-12 leading-relaxed max-w-3xl mx-auto">
                   Свяжитесь с нами для получения персонального предложения 
                   и детального расчета стоимости вашего проекта
                 </p>
@@ -378,7 +368,7 @@ export default function AboutPage() {
                   <a href="tel:+79280207959">
                     <Button 
                       size="lg" 
-                      className="bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-10 py-5 text-lg shadow-2xl hover:shadow-emerald-500/25 transition-all duration-200 transform hover:scale-105 border-0"
+                      className="bg-gradient-to-r from-emerald-600 via-emerald-700 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-10 py-5 text-lg shadow-2xl hover:shadow-emerald-500/25 transition-all duration-200 border-0"
                     >
                       <Phone className="mr-3 h-6 w-6" />
                       +7 (928) 020-79-59
@@ -388,7 +378,7 @@ export default function AboutPage() {
                     <Button 
                       size="lg" 
                       variant="outline"
-                      className="border-2 border-white/30 text-white hover:bg-white/10 hover:border-white/50 px-10 py-5 text-lg backdrop-blur-sm transition-all duration-200 transform hover:scale-105"
+                      className="border-2 border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400 px-10 py-5 text-lg backdrop-blur-sm transition-all duration-200"
                     >
                       <Mail className="mr-3 h-6 w-6" />
                       iyerikhon89@mail.ru

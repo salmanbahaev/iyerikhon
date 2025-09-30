@@ -84,7 +84,7 @@ export function MorphingText({
                 type: "spring",
                 stiffness: 400
               }}
-              className="inline-block mr-2"
+              className="inline-block mr-6"
             >
               {word}
             </motion.span>

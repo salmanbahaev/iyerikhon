@@ -105,6 +105,7 @@ export function MortgageAdvantages() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               whileHover={{ y: -8 }}
+              transition={{ duration: 0.3 }}
               className="group"
             >
               <Card className="p-8 h-full border-0 shadow-xl bg-gradient-to-br from-white to-slate-50 hover:shadow-2xl transition-all duration-500 overflow-hidden relative">
@@ -267,9 +268,10 @@ export function MortgageAdvantages() {
                   transition={{ duration: 0.6, delay: 0.6 }}
                   className="flex flex-col sm:flex-row gap-4 justify-center"
                 >
-                  <motion.button 
+                  <motion.button
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
                     className="group relative px-8 py-4 overflow-hidden rounded-xl font-semibold text-white transition-all duration-300"
                   >
                     <div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-blue-600 transition-all duration-300 group-hover:from-emerald-600 group-hover:to-blue-700" />
@@ -280,9 +282,10 @@ export function MortgageAdvantages() {
                     </span>
                   </motion.button>
                   
-                  <motion.button 
+                  <motion.button
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.95 }}
+                    transition={{ duration: 0.3 }}
                     className="px-8 py-4 border-2 border-slate-300 text-slate-700 rounded-xl font-semibold hover:border-emerald-400 hover:text-emerald-600 hover:bg-emerald-50 transition-all duration-300"
                   >
                     Получить консультацию

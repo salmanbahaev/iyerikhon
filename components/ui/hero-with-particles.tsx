@@ -31,7 +31,6 @@ export function HeroWithParticles({
   const { scrollY } = useScroll()
   const y1 = useTransform(scrollY, [0, 300], [0, -100])
   const y2 = useTransform(scrollY, [0, 300], [0, -150])
-  const opacity = useTransform(scrollY, [0, 300], [1, 0.3])
 
   // Initialize particles
   React.useEffect(() => {
@@ -88,7 +87,6 @@ export function HeroWithParticles({
         "bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950",
         className
       )}
-      style={{ opacity }}
     >
       {/* Animated background grid */}
       <div className="absolute inset-0">

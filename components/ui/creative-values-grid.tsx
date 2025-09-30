@@ -35,9 +35,9 @@ function ValueCard({ icon, title, description, index, isLarge = false }: ValueCa
     <motion.div
       initial={{ opacity: 0, y: 60, scale: 0.9 }}
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
-      whileHover={{ y: -8, scale: isLarge ? 1.02 : 1.05 }}
+      whileHover={{ y: -8, transition: { duration: 0.3 } }}
       viewport={{ once: true, margin: "-100px" }}
-      transition={{ 
+      transition={{
         duration: 0.4,
         delay: index * 0.1,
         type: "spring",

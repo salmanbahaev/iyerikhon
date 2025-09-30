@@ -125,7 +125,8 @@ export function CreativeContactSection({
                     "hover:shadow-xl transition-all duration-300 cursor-pointer overflow-hidden",
                     contact.href && "hover:border-blue-300"
                   )}
-                  whileHover={{ y: -4, scale: 1.02 }}
+                  whileHover={{ y: -4 }}
+                  transition={{ duration: 0.3 }}
                   animate={{
                     borderColor: hoveredIndex === index ? "#3b82f6" : "#e2e8f0"
                   }}
@@ -145,8 +146,7 @@ export function CreativeContactSection({
                   <motion.div
                     className="absolute top-2 right-2 w-16 h-16 opacity-5"
                     animate={{
-                      rotate: hoveredIndex === index ? 45 : 0,
-                      scale: hoveredIndex === index ? 1.2 : 1
+                      rotate: hoveredIndex === index ? 45 : 0
                     }}
                     transition={{ duration: 0.4 }}
                   >
@@ -161,7 +161,7 @@ export function CreativeContactSection({
                         "bg-gradient-to-br shadow-lg",
                         getContactColor(contact.type)
                       )}
-                      whileHover={{ rotate: 5, scale: 1.1 }}
+                      whileHover={{ rotate: 5 }}
                       animate={{
                         boxShadow: hoveredIndex === index 
                           ? "0 8px 25px -5px rgba(59, 130, 246, 0.3)" 
@@ -202,7 +202,7 @@ export function CreativeContactSection({
                     }}
                     initial={{ scale: 0, opacity: 0 }}
                     animate={{
-                      scale: hoveredIndex === index ? 2 : 0,
+                      scale: hoveredIndex === index ? 1 : 0,
                       opacity: hoveredIndex === index ? [0, 0.5, 0] : 0
                     }}
                     transition={{ duration: 0.8 }}
@@ -228,37 +228,18 @@ export function CreativeContactSection({
             {/* Interactive Map */}
             <motion.div
               className="relative rounded-2xl overflow-hidden shadow-xl"
-              whileHover={{ scale: 1.01 }}
               transition={{ duration: 0.3 }}
             >
-              <YandexMap 
+              <YandexMap
                 address={mapAddress}
                 coordinates={mapCoordinates}
-                className="h-80"
+                className="h-[500px]"
               />
               
               {/* Map overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent pointer-events-none" />
             </motion.div>
 
-            {/* Address details */}
-            <motion.div
-              className="mt-6 p-6 bg-gradient-to-br from-slate-50 to-white rounded-2xl border border-slate-200"
-              whileHover={{ y: -2 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="flex items-center gap-3 mb-3">
-                <div className="w-8 h-8 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                  <MapPin className="w-4 h-4 text-white" />
-                </div>
-                <h4 className="font-semibold text-slate-900">Адрес офиса</h4>
-              </div>
-              <p className="text-slate-600 leading-relaxed">
-                366913, Чеченская Республика,<br />
-                Гудермесский район, село Шуани,<br />
-                улица Р.Исаева, дом 40
-              </p>
-            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -268,92 +249,35 @@ export function CreativeContactSection({
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: isInView ? 1 : 0, y: isInView ? 0 : 50 }}
         transition={{ duration: 0.4, delay: 0.2, type: "spring" }}
-        className="mt-16 bg-gradient-to-br from-slate-50 via-white to-slate-50 rounded-3xl p-8 lg:p-12 border border-slate-200/60 overflow-hidden relative"
+        className="mt-12 bg-slate-100 rounded-2xl p-6 border border-slate-200 overflow-hidden"
       >
-        {/* Background decoration */}
-        <div className="absolute top-0 right-0 w-64 h-64 opacity-5">
-          <svg viewBox="0 0 200 200" className="w-full h-full">
-            <path
-              d="M50,50 Q150,50 150,150 Q50,150 50,50"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-            />
-          </svg>
+        <div className="text-center mb-6">
+          <h3 className="text-2xl font-bold text-slate-900 mb-2">
+            Реквизиты компании
+          </h3>
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto">
-          <div className="text-center mb-12">
-            <motion.h3 
-              className="text-3xl font-bold text-slate-900 mb-4"
-              whileHover={{
-                backgroundImage: "linear-gradient(45deg, #3b82f6, #10b981)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent"
-              }}
-            >
-              Реквизиты компании
-            </motion.h3>
-            <motion.div
-              className="w-20 h-1 bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full mx-auto"
-              animate={{
-                width: [80, 120, 80],
-                opacity: [0.7, 1, 0.7]
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut"
-              }}
-            />
-          </div>
-          
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div className="space-y-6">
-              {companyDetails.map((detail, index) => (
-                <motion.div
-                  key={index}
-                  className="flex justify-between items-center py-4 border-b border-slate-200/70 last:border-b-0"
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ 
-                    opacity: isInView ? 1 : 0, 
-                    x: isInView ? 0 : -20 
-                  }}
-                  transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
-                  whileHover={{ x: 4, backgroundColor: "rgba(248, 250, 252, 0.5)" }}
-                >
-                  <span className="font-medium text-slate-600">
-                    {detail.label}
-                  </span>
-                  <span className="font-semibold text-slate-900 text-right">
-                    {detail.value}
-                  </span>
-                </motion.div>
-              ))}
-            </div>
-            
-            <div className="flex flex-col justify-center space-y-4">
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  size="lg"
-                  className="w-full bg-gradient-to-r from-slate-900 to-slate-800 hover:from-slate-800 hover:to-slate-700 text-white shadow-lg"
-                >
-                  <Phone className="mr-2 h-5 w-5" />
-                  Позвонить
-                </Button>
+        <div className="max-w-2xl mx-auto">
+          <div className="grid gap-3">
+            {companyDetails.map((detail, index) => (
+              <motion.div
+                key={index}
+                className="flex justify-between items-center py-2"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{
+                  opacity: isInView ? 1 : 0,
+                  x: isInView ? 0 : -20
+                }}
+                transition={{ duration: 0.3, delay: 0.3 + index * 0.05 }}
+              >
+                <span className="font-medium text-slate-600 text-sm">
+                  {detail.label}
+                </span>
+                <span className="font-semibold text-slate-900 text-sm text-right">
+                  {detail.value}
+                </span>
               </motion.div>
-              
-              <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-                <Button 
-                  size="lg"
-                  variant="outline" 
-                  className="w-full border-2 border-slate-300 text-slate-700 hover:bg-slate-100 hover:border-slate-400"
-                >
-                  <Send className="mr-2 h-5 w-5" />
-                  Написать письмо
-                </Button>
-              </motion.div>
-            </div>
+            ))}
           </div>
         </div>
       </motion.div>

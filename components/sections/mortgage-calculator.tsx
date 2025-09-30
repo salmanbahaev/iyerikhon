@@ -206,6 +206,7 @@ function AdvancedSlider({
     <motion.div 
       className={`p-6 rounded-2xl ${importanceStyles[importance]} transition-all duration-300 hover:scale-[1.02]`}
       whileHover={{ y: -2 }}
+      transition={{ duration: 0.3 }}
     >
       <div className="flex items-center justify-between mb-4">
         <div className="flex items-center gap-3">
