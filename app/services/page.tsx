@@ -215,7 +215,7 @@ export default function ServicesPage() {
               </FadeIn>
               
               <FadeIn delay={0.1}>
-                <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 leading-tight">
                   <span className="block text-white mb-2">Полный спектр</span>
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-400 to-purple-400 animate-gradient-x">
                     строительных услуг
@@ -224,7 +224,7 @@ export default function ServicesPage() {
               </FadeIn>
               
               <FadeIn delay={0.2}>
-                <p className="text-xl md:text-2xl text-slate-300 mb-10 leading-relaxed max-w-2xl">
+                <p className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-6 sm:mb-10 leading-relaxed max-w-2xl">
                   От частного домостроения до крупных государственных проектов — 
                   <span className="text-white font-semibold"> мы обеспечиваем высокое качество</span> на каждом этапе
                 </p>
@@ -292,7 +292,7 @@ export default function ServicesPage() {
                             </div>
                             <div className="absolute inset-0 bg-gradient-to-br from-blue-400/20 to-emerald-400/20 rounded-2xl blur-lg group-hover:blur-xl transition-all duration-300"></div>
                           </div>
-                          <div className="text-3xl font-bold text-white mb-2 group-hover:scale-105 transition-transform duration-300">
+                          <div className="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-2 group-hover:scale-105 transition-transform duration-300">
                             <AnimatedCounter value={stat.value} suffix={stat.suffix} />
                           </div>
                           <div className="text-sm text-slate-300 group-hover:text-white transition-colors duration-300">{stat.label}</div>
@@ -326,10 +326,10 @@ export default function ServicesPage() {
         <Container>
           <div className="text-center mb-16">
             <FadeIn>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                 Наши услуги
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
                 Предоставляем полный цикл строительных работ с гарантией качества 
                 и соблюдением всех технических требований
               </p>
@@ -349,7 +349,7 @@ export default function ServicesPage() {
                       <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 text-sm font-semibold rounded-full mb-2">
                         Основная услуга
                       </span>
-                      <h3 className="text-3xl font-bold text-slate-900">
+                      <h3 className="text-xl sm:text-2xl lg:text-3xl font-bold text-slate-900">
                         Строительство частных домов под ключ
                       </h3>
                     </div>
@@ -392,7 +392,7 @@ export default function ServicesPage() {
                       <service.icon className="w-8 h-8 text-white" />
                     </div>
                     
-                    <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">
+                    <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-700 transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-slate-600 mb-4 leading-relaxed">
@@ -428,10 +428,10 @@ export default function ServicesPage() {
         <Container>
           <div className="text-center mb-16">
             <FadeIn>
-              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                 Почему выбирают нас
               </h2>
-              <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto">
                 Наши конкурентные преимущества и партнерства с ведущими компаниями России
               </p>
             </FadeIn>
@@ -444,7 +444,7 @@ export default function ServicesPage() {
                   <div className="w-16 h-16 bg-gradient-to-br from-blue-600 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-lg">
                     <advantage.icon className="w-8 h-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-4">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-4">
                     {advantage.title}
                   </h3>
                   <p className="text-slate-600 leading-relaxed">

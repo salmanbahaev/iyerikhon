@@ -117,11 +117,11 @@ export function MortgageAdvantages() {
                     <IconComponent className="w-8 h-8 text-white" />
                   </div>
                   
-                  <h3 className="text-xl font-bold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-900 mb-4 group-hover:text-slate-700 transition-colors">
                     {advantage.title}
                   </h3>
                   
-                  <p className="text-slate-600 leading-relaxed mb-6">
+                  <p className="text-slate-600 leading-relaxed mb-6 text-sm sm:text-base">
                     {advantage.description}
                   </p>
                   

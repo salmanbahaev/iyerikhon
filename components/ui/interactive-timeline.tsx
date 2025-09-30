@@ -86,16 +86,17 @@ export function InteractiveTimeline({ items, className }: InteractiveTimelinePro
 
         {/* Timeline line */}
         <div className="relative">
-          <div className="absolute w-0.5 bg-slate-200 top-0 bottom-0" style={{ left: '32px' }} />
-          
+          <div className="absolute w-0.5 bg-slate-200 top-0 bottom-0 left-4 sm:left-8" />
+          <div className="absolute w-0.5 bg-slate-200 top-0 bottom-0 left-4 sm:left-8" />
+
           {/* Progress indicator - scroll-based */}
           <motion.div
-            className="absolute w-0.5 bg-gradient-to-b from-blue-600 to-emerald-600 top-0"
-            style={{ left: '32px', height: progressHeight }}
+            className="absolute w-0.5 bg-gradient-to-b from-blue-600 to-emerald-600 top-0 left-4 sm:left-8"
+            style={{ height: progressHeight }}
           />
 
           {/* Timeline items */}
-          <div className="space-y-12">
+          <div className="space-y-8 sm:space-y-12">
             {items.map((item, index) => {
               const isActive = index === activeIndex
               const isPassed = index < activeIndex
@@ -103,7 +104,7 @@ export function InteractiveTimeline({ items, className }: InteractiveTimelinePro
               return (
                 <motion.div
                   key={index}
-                  className="relative pl-20"
+                  className="relative pl-12 sm:pl-20"
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ 
                     opacity: 1, 
@@ -119,8 +120,7 @@ export function InteractiveTimeline({ items, className }: InteractiveTimelinePro
                 >
                   {/* Timeline dot */}
                   <motion.div
-                    className="absolute w-4 h-4 rounded-full border-2 flex items-center justify-center cursor-pointer"
-                    style={{ left: '25px', top: '8px' }}
+                    className="absolute w-3 h-3 sm:w-4 sm:h-4 rounded-full border-2 flex items-center justify-center cursor-pointer left-3 sm:left-7 top-2"
                     animate={{
                       backgroundColor: isActive ? "#3b82f6" : isPassed ? "#10b981" : "#ffffff",
                       borderColor: isActive ? "#3b82f6" : isPassed ? "#10b981" : "#cbd5e1"

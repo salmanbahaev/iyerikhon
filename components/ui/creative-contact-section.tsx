@@ -70,7 +70,7 @@ export function CreativeContactSection({
         </svg>
       </div>
 
-      <div className="relative z-10 grid lg:grid-cols-2 gap-16">
+      <div className="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-16">
         {/* Contact Information */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
@@ -233,7 +233,7 @@ export function CreativeContactSection({
               <YandexMap
                 address={mapAddress}
                 coordinates={mapCoordinates}
-                className="h-[500px]"
+                className="h-[300px] sm:h-[400px] lg:h-[500px]"
               />
               
               {/* Map overlay */}

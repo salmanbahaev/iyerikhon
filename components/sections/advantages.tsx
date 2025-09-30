@@ -80,10 +80,10 @@ export function Advantages() {
       <Container>
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-secondary-900 mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-secondary-900 mb-4 sm:mb-6">
               Наши преимущества
             </h2>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
               Мы работаем с крупнейшими банками и корпорациями России, 
               что гарантирует высокое качество и надежность наших услуг
             </p>
@@ -108,12 +108,12 @@ export function Advantages() {
                   </div>
                   
                   {/* Заголовок */}
-                  <h3 className="relative z-10 text-2xl font-bold text-secondary-900 mb-4 group-hover:text-primary-600 transition-colors duration-300">
+                  <h3 className="relative z-10 text-lg sm:text-xl lg:text-2xl font-bold text-secondary-900 mb-3 sm:mb-4 group-hover:text-primary-600 transition-colors duration-300">
                     {advantage.title}
                   </h3>
                   
                   {/* Описание */}
-                  <p className="relative z-10 text-secondary-600 mb-6 leading-relaxed">
+                  <p className="relative z-10 text-secondary-600 mb-4 sm:mb-6 leading-relaxed text-sm sm:text-base">
                     {advantage.description}
                   </p>
                   

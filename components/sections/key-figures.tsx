@@ -80,10 +80,10 @@ export function KeyFigures() {
       <Container>
         <FadeIn>
           <div className="text-center mb-16">
-            <h2 className="text-4xl lg:text-5xl font-bold text-secondary-900 mb-6">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-secondary-900 mb-4 sm:mb-6">
               Наши достижения в цифрах
             </h2>
-            <p className="text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-secondary-600 max-w-3xl mx-auto leading-relaxed">
               За годы работы мы построили десятки объектов, отремонтировали тысячи квадратных метров 
               и создали современные пространства для жизни, учебы и работы
             </p>
@@ -112,11 +112,11 @@ export function KeyFigures() {
                     <div className="flex items-baseline space-x-1">
                       <AnimatedCounter
                         value={figure.value}
-                        className="text-4xl lg:text-5xl font-bold text-secondary-900"
+                        className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-secondary-900"
                         duration={2000}
                         delay={index * 200}
                       />
-                      <span className="text-3xl lg:text-4xl font-bold text-secondary-900">
+                      <span className="text-xl sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-secondary-900">
                         {figure.suffix}
                       </span>
                     </div>
@@ -146,26 +146,28 @@ export function KeyFigures() {
         {/* Дополнительная информация */}
         <FadeIn delay={0.6}>
           <div className="mt-16 text-center">
-            <div className="inline-flex items-center space-x-8 bg-white rounded-2xl p-8 shadow-lg border border-secondary-100">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center">
-                  <span className="text-white font-bold">ВТБ</span>
+            <div className="flex flex-col gap-6 bg-white rounded-2xl p-6 shadow-lg border border-secondary-100 sm:grid sm:grid-cols-3 sm:gap-8 sm:p-8 sm:items-start">
+              <div className="flex items-start space-x-3 sm:space-x-4 sm:justify-start">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-primary-500 to-primary-600 rounded-full flex items-center justify-center flex-shrink-0">
+                  <span className="text-white font-bold text-sm sm:text-base">ВТБ</span>
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold text-secondary-900">Аккредитованный застройщик</div>
-                  <div className="text-sm text-secondary-600">Банк ВТБ (ПАО)</div>
+                  <div className="font-semibold text-secondary-900 text-sm sm:text-base">Аккредитованный застройщик</div>
+                  <div className="text-xs sm:text-sm text-secondary-600">Банк ВТБ (ПАО)</div>
                 </div>
               </div>
-              
-              <div className="h-8 w-px bg-secondary-200"></div>
-              
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-gradient-to-br from-success-500 to-success-600 rounded-full flex items-center justify-center">
+
+              <div className="flex justify-center sm:flex">
+                <div className="w-8 h-px sm:w-px sm:h-8 bg-secondary-200"></div>
+              </div>
+
+              <div className="flex items-start space-x-3 sm:space-x-4 sm:justify-end">
+                <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-success-500 to-success-600 rounded-full flex items-center justify-center flex-shrink-0">
                   <span className="text-white font-bold text-xs">СБ</span>
                 </div>
                 <div className="text-left">
-                  <div className="font-semibold text-secondary-900">Подрядчик</div>
-                  <div className="text-sm text-secondary-600">ПАО Сбербанк</div>
+                  <div className="font-semibold text-secondary-900 text-sm sm:text-base">Подрядчик</div>
+                  <div className="text-xs sm:text-sm text-secondary-600">ПАО Сбербанк</div>
                 </div>
               </div>
             </div>

@@ -173,7 +173,7 @@ export default function AboutPage() {
               </FadeIn>
               
               <FadeIn delay={0.1}>
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold mb-8 leading-[0.9] tracking-tight">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold mb-6 sm:mb-8 leading-[0.9] tracking-tight">
                   <span className="block text-white mb-4">ООО «Иерихон»</span>
                   <MorphingText 
                     texts={heroTexts}
@@ -184,7 +184,7 @@ export default function AboutPage() {
               </FadeIn>
               
               <FadeIn delay={0.2}>
-                <p className="text-xl md:text-2xl text-slate-300 mb-12 leading-relaxed max-w-4xl mx-auto">
+                <p className="text-lg sm:text-xl md:text-2xl text-slate-300 mb-8 sm:mb-12 leading-[1.8] max-w-4xl mx-auto">
                   Аккредитованный застройщик <span className="text-blue-400 font-semibold">ВТБ</span> и 
                   подрядчик <span className="text-emerald-400 font-semibold">Сбербанка</span>. 
                   Специализируемся на полном комплексе строительных услуг — 
@@ -196,7 +196,7 @@ export default function AboutPage() {
                 <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
                   <Button 
                     size="lg" 
-                    className="bg-gradient-to-r from-white to-slate-100 text-slate-900 hover:from-slate-100 hover:to-slate-200 px-8 py-4 text-lg shadow-xl hover:shadow-2xl transition-all duration-200"
+                    className="bg-gradient-to-r from-blue-600 via-blue-700 to-emerald-600 text-white hover:from-blue-700 hover:to-emerald-700 px-8 py-4 text-lg shadow-xl hover:shadow-2xl hover:shadow-blue-500/25 transition-all duration-200"
                   >
                     <Phone className="mr-3 h-5 w-5" />
                     Связаться с нами
@@ -205,7 +205,7 @@ export default function AboutPage() {
                     <Button 
                       size="lg" 
                       variant="outline"
-                      className="border-2 border-white/40 text-white hover:bg-white/10 hover:border-white/60 px-8 py-4 text-lg backdrop-blur-sm transition-all duration-200"
+                      className="border-2 border-emerald-400/60 text-emerald-300 hover:bg-emerald-500/10 hover:border-emerald-400 hover:text-emerald-200 px-8 py-4 text-lg backdrop-blur-sm transition-all duration-200 shadow-lg hover:shadow-emerald-500/20"
                     >
                       <Star className="mr-3 h-5 w-5" />
                       Наше портфолио
@@ -223,13 +223,13 @@ export default function AboutPage() {
           <Container className="relative z-10">
             <FadeIn>
               <div className="text-center mb-20">
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">
                   Наши достижения
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">
                     в цифрах
                   </span>
                 </h2>
-                <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-[1.8]">
                   За годы работы мы накопили богатый опыт и завоевали доверие сотен клиентов
                 </p>
               </div>
@@ -242,14 +242,14 @@ export default function AboutPage() {
         {/* Interactive Timeline Section */}
         <section className="py-32 bg-white relative overflow-hidden">
           <Container>
-            <div className="grid lg:grid-cols-12 gap-16 items-start">
-              <div className="lg:col-span-8">
+            <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-start">
+              <div className="lg:col-span-8 order-2 lg:order-1">
                 <FadeIn>
                   <div className="mb-12">
-                    <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                    <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">
                       История компании
                     </h2>
-                    <p className="text-xl text-slate-600 leading-relaxed">
+                    <p className="text-xl text-slate-600 leading-[1.8]">
                       Путь от небольшой строительной бригады до лидера рынка
                     </p>
                   </div>
@@ -258,7 +258,7 @@ export default function AboutPage() {
                 <InteractiveTimeline items={timeline} />
               </div>
 
-              <div className="lg:col-span-4">
+              <div className="lg:col-span-4 order-1 lg:order-2">
                 <FadeIn delay={0.2}>
                   <div className="sticky top-32">
                     <div className="bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 rounded-3xl p-8 lg:p-10 text-white relative overflow-hidden">
@@ -272,10 +272,10 @@ export default function AboutPage() {
                           <div className="w-12 h-12 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center">
                             <Heart className="w-6 h-6 text-white" />
                           </div>
-                          <h3 className="text-2xl font-bold text-white">Наша миссия</h3>
+                          <h3 className="text-xl sm:text-2xl font-bold text-white">Наша миссия</h3>
                         </div>
                         
-                        <p className="text-slate-200 leading-relaxed mb-6">
+                        <p className="text-slate-200 leading-[1.8] mb-6">
                           Создавать комфортные и надежные условия для жизни и работы, 
                           внося вклад в будущее клиентов и общества через качественное 
                           строительство и ответственное ведение бизнеса.
@@ -301,10 +301,10 @@ export default function AboutPage() {
           <Container>
             <FadeIn>
               <div className="text-center mb-20">
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">
                   Наши ценности
                 </h2>
-                <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-[1.8]">
                   Принципы, которые определяют наш подход к каждому проекту
                 </p>
               </div>
@@ -319,10 +319,10 @@ export default function AboutPage() {
           <Container>
             <FadeIn>
               <div className="text-center mb-20">
-                <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-slate-900 mb-4 sm:mb-6 leading-tight">
                   Свяжитесь с нами
                 </h2>
-                <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
+                <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-[1.8]">
                   Обсудим ваш проект и предложим оптимальное решение
                 </p>
               </div>
@@ -332,7 +332,7 @@ export default function AboutPage() {
               contactInfo={contactInfo}
               companyDetails={companyDetails}
               mapAddress="ул. Р.Исаева, д. 40, с. Шуани, Гудермесский р-н"
-              mapCoordinates={[43.3569, 46.1061]}
+              mapCoordinates={[43.338663, 46.187392]}
             />
           </Container>
         </section>
@@ -348,7 +348,7 @@ export default function AboutPage() {
           <Container className="relative z-10">
             <div className="max-w-5xl mx-auto text-center">
               <FadeIn>
-                <h2 className="text-4xl md:text-6xl font-bold mb-8 leading-relaxed">
+                <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 sm:mb-8 leading-[1.8]">
                   Готовы начать
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-emerald-400 to-purple-400 animate-gradient-x">
                     сотрудничество?
@@ -357,7 +357,7 @@ export default function AboutPage() {
               </FadeIn>
               
               <FadeIn delay={0.1}>
-                <p className="text-xl md:text-2xl text-slate-600 mb-12 leading-relaxed max-w-3xl mx-auto">
+                <p className="text-lg sm:text-xl md:text-2xl text-slate-600 mb-8 sm:mb-12 leading-[1.8] max-w-3xl mx-auto">
                   Свяжитесь с нами для получения персонального предложения 
                   и детального расчета стоимости вашего проекта
                 </p>

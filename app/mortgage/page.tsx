@@ -30,11 +30,11 @@ export default function MortgagePage() {
                   </svg>
                   Аккредитованный застройщик ВТБ
                 </div>
-                <h1 className="text-4xl lg:text-6xl font-bold text-slate-900 mb-6">
+                <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold text-slate-900 mb-4 sm:mb-6">
                   Ипотека ВТБ для строительства
                   <span className="block text-blue-600">вашего дома</span>
                 </h1>
-                <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
+                <p className="text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                   Воспользуйтесь выгодными условиями ипотечного кредитования от банка ВТБ. 
                   Мы поможем вам построить дом мечты с минимальными переплатами.
                 </p>

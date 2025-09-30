@@ -117,7 +117,7 @@ export function ModernHero() {
 
             {/* Основной заголовок */}
             <div className="space-y-6">
-              <h2 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
                 <span className="bg-gradient-to-r from-emerald-300 via-blue-300 to-emerald-300 bg-clip-text text-transparent">
                   Строим
                 </span>
@@ -126,12 +126,12 @@ export function ModernHero() {
                   ваши дома
                 </span>
                 <br />
-                <span className="text-2xl lg:text-3xl font-light text-white/80">
+                <span className="text-lg sm:text-xl lg:text-2xl xl:text-3xl font-light text-white/80">
                   по выгодной ипотеке
                 </span>
               </h2>
               
-              <p className="text-xl text-white/70 leading-relaxed max-w-lg">
+              <p className="text-lg sm:text-xl text-white/70 leading-relaxed max-w-lg">
                 От проекта до новоселья. Работаем с крупнейшими банками России и создаем современные пространства для жизни и работы.
               </p>
             </div>
