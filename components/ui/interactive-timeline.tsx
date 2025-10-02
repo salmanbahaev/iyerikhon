@@ -31,7 +31,7 @@ export function InteractiveTimeline({ items, className }: InteractiveTimelinePro
 
   // Update active index based on scroll progress
   React.useEffect(() => {
-    const unsubscribe = scrollYProgress.onChange((progress) => {
+    const unsubscribe = scrollYProgress.on("change", (progress) => {
       const newIndex = Math.min(
         Math.round(progress * (items.length - 1)),
         items.length - 1

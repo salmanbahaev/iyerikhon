@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { getProjectBySlug, getRelatedProjects } from '@/lib/mock-projects'
+import { getProjectBySlug, getRelatedProjects, getAllProjects } from '@/lib/mock-projects'
 import { ProjectDetails } from '@/components/sections/project-details'
 import { ProjectGallery } from '@/components/sections/project-gallery'
 import { ProjectSpecifications } from '@/components/sections/project-specifications'
@@ -14,6 +14,13 @@ interface Props {
   params: Promise<{
     slug: string
   }>
+}
+
+export async function generateStaticParams() {
+  const projects = getAllProjects()
+  return projects.map((project) => ({
+    slug: project.slug,
+  }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

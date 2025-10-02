@@ -866,6 +866,10 @@ export const mockPortfolio: PortfolioProject[] = [
 ]
 
 // Функции для работы с портфолио
+export function getAllPortfolioProjects() {
+  return mockPortfolio
+}
+
 export function getPortfolioByCategory(category?: string) {
   if (!category) return mockPortfolio
   return mockPortfolio.filter(project => project.category === category)

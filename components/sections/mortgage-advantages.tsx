@@ -105,7 +105,6 @@ export function MortgageAdvantages() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               whileHover={{ y: -8 }}
-              transition={{ duration: 0.3 }}
               className="group"
             >
               <Card className="p-8 h-full border-0 shadow-xl bg-gradient-to-br from-white to-slate-50 hover:shadow-2xl transition-all duration-500 overflow-hidden relative">

@@ -80,14 +80,11 @@ export function CreativeContactSection({
         >
           <div className="relative">
             <motion.h3 
-              className="text-3xl font-bold text-slate-900 mb-8"
-              animate={{
-                backgroundImage: hoveredIndex !== null 
-                  ? "linear-gradient(45deg, #3b82f6, #10b981)" 
-                  : "linear-gradient(45deg, #0f172a, #0f172a)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent"
-              }}
+              className={`text-3xl font-bold mb-8 ${
+                hoveredIndex !== null 
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-emerald-500" 
+                  : "text-slate-900"
+              }`}
               transition={{ duration: 0.3 }}
             >
               Связь с нами
@@ -234,6 +231,7 @@ export function CreativeContactSection({
                 address={mapAddress}
                 coordinates={mapCoordinates}
                 className="h-[300px] sm:h-[400px] lg:h-[500px]"
+                apiKey={process.env.NEXT_PUBLIC_YANDEX_MAPS_API_KEY}
               />
               
               {/* Map overlay */}

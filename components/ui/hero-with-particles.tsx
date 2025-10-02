@@ -63,16 +63,16 @@ export function HeroWithParticles({
     if (particles.length === 0) return
 
     const animateParticles = () => {
-      setParticles(prev => prev.map(particle => ({
-        ...particle,
-        y: particle.y - particle.speed,
-        opacity: particle.y < 0 
-          ? Math.random() * 0.8 + 0.2 
-          : particle.opacity,
-        y: particle.y < 0 
-          ? window.innerHeight + 20 
-          : particle.y
-      })))
+      setParticles(prev => prev.map(particle => {
+        const newY = particle.y - particle.speed
+        return {
+          ...particle,
+          y: newY < 0 ? window.innerHeight + 20 : newY,
+          opacity: newY < 0 
+            ? Math.random() * 0.8 + 0.2 
+            : particle.opacity
+        }
+      }))
     }
 
     const interval = setInterval(animateParticles, 50)

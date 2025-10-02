@@ -86,7 +86,6 @@ export function MortgageFeatures() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                transition={{ duration: 0.3 }}
                 className="group relative"
               >
                 <Card className={`

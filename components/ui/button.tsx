@@ -64,6 +64,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       }
     }
 
+    // Извлекаем только безопасные HTML-атрибуты
+    const {
+      onClick,
+      onDrag,
+      onDragStart,
+      onDragEnd,
+      whileHover,
+      whileTap,
+      ...safeProps
+    } = props as any
+
     return (
       <motion.button
         className={cn(
@@ -77,7 +88,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         disabled={disabled || loading}
         onClick={handleClick}
         whileTap={{ scale: 0.98 }}
-        {...props}
+        {...safeProps}
       >
         {loading && (
           <svg

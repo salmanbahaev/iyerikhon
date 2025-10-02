@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { Header } from '@/components/layout/header'
 import { Footer } from '@/components/layout/footer'
-import { getPortfolioBySlug } from '@/lib/mock-portfolio'
+import { getPortfolioBySlug, getAllPortfolioProjects } from '@/lib/mock-portfolio'
 import { PortfolioProjectDetails } from '@/components/sections/portfolio-project-details'
 import { Container } from '@/components/ui/container'
 
@@ -10,6 +10,13 @@ interface Props {
   params: Promise<{
     slug: string
   }>
+}
+
+export async function generateStaticParams() {
+  const projects = getAllPortfolioProjects()
+  return projects.map((project) => ({
+    slug: project.slug,
+  }))
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

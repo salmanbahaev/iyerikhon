@@ -44,10 +44,10 @@ export interface PortfolioFilters {
 export type PortfolioCategory = 'houses' | 'schools' | 'landscaping' | 'sberbank'
 
 export const PORTFOLIO_CATEGORIES = {
-  houses: { label: 'Частные дома', icon: '🏠' },
-  schools: { label: 'Школы', icon: '🏫' },
-  landscaping: { label: 'Благоустройство', icon: '🌳' },
-  sberbank: { label: 'Сбербанк', icon: '🏢' }
+  houses: { label: 'Частные дома', icon: '🏠', color: 'blue' },
+  schools: { label: 'Школы', icon: '🏫', color: 'purple' },
+  landscaping: { label: 'Благоустройство', icon: '🌳', color: 'green' },
+  sberbank: { label: 'Сбербанк', icon: '🏢', color: 'emerald' }
 }
 
 export const PORTFOLIO_STATUS = {

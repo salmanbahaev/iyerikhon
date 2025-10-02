@@ -288,6 +288,11 @@ export const mockProjects: Project[] = [
   }
 ]
 
+// Функция для получения всех проектов
+export function getAllProjects() {
+  return mockProjects
+}
+
 // Функция для получения проектов с фильтрацией
 export function getFilteredProjects(filters?: Partial<Project>) {
   let filteredProjects = [...mockProjects]

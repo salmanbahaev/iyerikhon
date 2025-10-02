@@ -10,7 +10,8 @@ interface YandexMapProps {
   apiKey?: string
 }
 
-export function YandexMap({ address, coordinates, className = "", apiKey }: YandexMapProps) {
+function YandexMapComponent({ address, coordinates, className = "", apiKey }: YandexMapProps) {
+  
   const mapRef = useRef<HTMLDivElement>(null)
   const mapInstanceRef = useRef<any>(null)
   const [isClient, setIsClient] = React.useState(false)
@@ -25,21 +26,26 @@ export function YandexMap({ address, coordinates, className = "", apiKey }: Yand
   useEffect(() => {
     if (!isClient) return
 
-    console.log('🗺️ Начинаем загрузку Яндекс.Карт...')
-
     // Загружаем Яндекс.Карты API
     const loadYandexMaps = () => {
       const yandexApiKey = apiKey || process.env.NEXT_PUBLIC_YANDEX_MAPS_API_KEY || 'demo-key-for-testing'
 
-      console.log('🔑 API ключ:', yandexApiKey ? 'установлен' : 'не установлен')
-
-      if (!yandexApiKey || yandexApiKey === 'demo-key-for-testing') {
+      if (!yandexApiKey || yandexApiKey === 'demo-key-for-testing' || yandexApiKey === 'undefined') {
         // Если API ключ не настроен или используется демо-ключ, показываем статическую карту
         console.warn('⚠️ API ключ Яндекс.Карт не настроен. Используем статическую карту.')
         setError('Карта недоступна. Используем статическую версию.')
         setIsLoading(false)
         return
       }
+
+      // Временно отключаем проверку формата для отладки
+      // const apiKeyPattern = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i
+      // if (!apiKeyPattern.test(yandexApiKey)) {
+      //   console.warn('⚠️ Неверный формат API ключа Яндекс.Карт. Используем статическую карту.')
+      //   setError('Неверный формат API ключа. Используем статическую версию.')
+      //   setIsLoading(false)
+      //   return
+      // }
 
       // Таймаут для загрузки скрипта (10 секунд)
       const loadTimeout = setTimeout(() => {
@@ -49,12 +55,10 @@ export function YandexMap({ address, coordinates, className = "", apiKey }: Yand
       }, 10000)
 
       if (typeof window !== 'undefined' && !window.ymaps) {
-        console.log('📦 Загружаем скрипт Яндекс.Карт...')
         const script = document.createElement('script')
         script.src = `https://api-maps.yandex.ru/2.1/?apikey=${yandexApiKey}&lang=ru_RU`
         script.async = true
         script.onload = () => {
-          console.log('✅ Скрипт Яндекс.Карт загружен')
           clearTimeout(loadTimeout)
           try {
             initMap()
@@ -72,7 +76,6 @@ export function YandexMap({ address, coordinates, className = "", apiKey }: Yand
         }
         document.head.appendChild(script)
       } else if (window.ymaps) {
-        console.log('✅ Яндекс.Карты уже загружены')
         clearTimeout(loadTimeout)
         try {
           initMap()
@@ -85,11 +88,8 @@ export function YandexMap({ address, coordinates, className = "", apiKey }: Yand
     }
 
     const initMap = () => {
-      console.log('🏗️ Инициализация карты...')
       if (window.ymaps && mapRef.current && !mapInstanceRef.current) {
-        console.log('📍 Создаем карту с координатами:', coordinates)
         window.ymaps.ready(() => {
-          console.log('🔄 YMaps ready, создаем карту...')
           try {
             const map = new window.ymaps.Map(mapRef.current, {
               center: coordinates,
@@ -171,7 +171,6 @@ export function YandexMap({ address, coordinates, className = "", apiKey }: Yand
   }, [coordinates, address, retryCount])
 
   const handleRetry = () => {
-    console.log('🔄 Повторная попытка загрузки карты...')
     setIsLoading(true)
     setError(null)
     setRetryCount(prev => prev + 1)
@@ -291,6 +290,9 @@ export function YandexMap({ address, coordinates, className = "", apiKey }: Yand
     </div>
   )
 }
+
+// Мемоизируем компонент для предотвращения лишних рендеров
+export const YandexMap = React.memo(YandexMapComponent)
 
 // Расширяем глобальный объект Window
 declare global {
